@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Student List</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Group</th>
+                    <th>Group Student count</th>
+                    <th>course</th>
+                    <th>Teacher</th>
+                    <th>student</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for group in groups %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                  <td>  <a href="{% url 'group-detail' group.pk %}">{{ group.name }}</a></td>
+
+                    <td>{{ group.start_date }}</td>
+                    <td>{{ group.course.name }}</td>
+                    <td>{{ group.teacher }}</td>
+                    <td><a href="{% url 'add-student-group-detail' group.pk %}">{{ group.students.count }}</a></td>
+
+
+
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No groups found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<ol class="list-group list-group-numbered">
+    {% for n in normatives %}
+    <li class="list-group-item d-flex flex-column">
+       <a href="{% url 'detail-normative' n.pk %}"> <h5 class="fw-bold">{{ n.title }}</h5></a>
+        <p class="mb-2">{{ n.description }}</p>
+
+        {% if n.file %}
+            <a href="{{ n.file.url }}" class="btn btn-primary btn-sm w-25">Faylni yuklab olish</a>
+        {% else %}
+            <span class="text-muted">Fayl mavjud emas</span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

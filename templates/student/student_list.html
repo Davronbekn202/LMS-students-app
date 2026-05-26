@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="mb-4">Student List</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Course Name</th>
+                    <th>Group Name</th>
+                    <th>Mark</th>
+                    <th>narmativ bajargan soni</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for data in student_data %}
+<tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ data.student.user.username }}</td>
+    <td>{{ data.student.groups.course.name }}</td>
+    <td>{{ data.student.groups.name }}</td>
+    <td>{{ data.total_grade }}</td>
+    <td>{{ data.student.assign_student.count }}</td>
+</tr>
+
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No students found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

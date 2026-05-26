@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Ismi:{{ assign.student.user.username }}</p>
+<h4>{{ assign.assignment.id }}.{{ assign.assignment.title }}</h4>
+<h4>{{ assign.assignment.description }}</h4>
+<p>{{ assign.text }}</p>
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit">send</button>
+</form>
+
+
+{% endblock %}

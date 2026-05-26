@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h3> {{ normative.pk }}.Narmative savoli</h3>
+
+    <!-- Normative info card -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">{{ normative.title }}</h3>
+            <p class="card-text">{{ normative.description }}</p>
+
+            {% if normative.file %}
+                <a href="{{ normative.file.url }}" class="btn btn-primary">Faylni yuklab olish</a>
+            {% else %}
+                <span class="text-muted">Fayl mavjud emas</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Form card -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Yangi ma’lumot yuborish</h5>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-success mt-2">Send</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

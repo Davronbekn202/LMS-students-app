@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">NArmativ Mark List</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Narmative name</th>
+                <th>Student username</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assign in assigns %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+             <td>  <a href="{% url 'assign-detail' assign.pk %}"> {{ assign.assignment.id}}.{{ assign.assignment.title }}</a></td>
+                <td>{{ assign.student.user.username }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

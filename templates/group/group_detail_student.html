@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>{{ group.name }}</p>
+{% for data in  students %}
+{{ data.id }}
+<p>{{ data.user.username }}</p>
+<p>{{ group.name }}</p>
+
+{% endfor %}
+
+{% endblock %}
